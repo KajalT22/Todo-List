@@ -1,0 +1,12 @@
+<div class="container-fluid">
+   <h2 class="text-center mb-3">Todo List</h2>
+   <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+   <h4>Your Todos</h4>
+   <div *ngIf="this.todos.length===0; else elseBlock">No Todo's to display!</div>
+   <ng-template #elseBlock></ng-template>
+   <div *ngFor="let todo of todos index as i">
+      <!-- todoDelete is our event that will trigger when click on delete now we have to deletethat Todo from todos aray deleteTodo($event) with this will delete -->
+      <app-todo-item [todo]="todo" [i]="i" (todoDelete)="deleteTodo($event)"
+         (todoCheckBox)="toggleTodo($event)"></app-todo-item>
+   </div>
+</div>
